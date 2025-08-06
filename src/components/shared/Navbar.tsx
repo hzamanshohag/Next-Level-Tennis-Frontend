@@ -1,4 +1,6 @@
 'use client'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 
@@ -15,11 +17,13 @@ const Navbar = () => {
       setIsMenuOpen(!isMenuOpen);
     };
 
+    const pathName = usePathname()
+
 
     return (
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <p> 
+          <p>
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-blue-500">
               Tennis Club
             </span>
@@ -136,29 +140,56 @@ const Navbar = () => {
 
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                  aria-current="page"
+                <Link
+                  href="/"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0 ${
+                    pathName === "/"
+                      ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
+                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  }`}
+                  aria-current={pathName === "/" ? "page" : undefined}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                <Link
+                  href="/dashboard/members"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0 ${
+                    pathName === "/dashboard/members"
+                      ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
+                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  }`}
+                  aria-current={pathName === "/" ? "page" : undefined}
                 >
-                  About
-                </a>
+                  Members
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                <Link
+                  href="/dashboard/add"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0 ${
+                    pathName === "/dashboard/add"
+                      ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
+                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  }`}
+                  aria-current={pathName === "/" ? "page" : undefined}
                 >
-                  Services
-                </a>
+                  Add Member
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/login"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0 ${
+                    pathName === "/login"
+                      ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
+                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  }`}
+                  aria-current={pathName === "/" ? "page" : undefined}
+                >
+                  Login
+                </Link>
               </li>
             </ul>
           </div>
